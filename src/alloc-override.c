@@ -191,7 +191,7 @@ typedef void* mi_nothrow_t;
   void* operator new[](std::size_t n, std::align_val_t al, const std::nothrow_t&) noexcept { return mi_new_aligned_nothrow(n, static_cast<size_t>(al)); }
   #endif
 
-#elif (defined(__GNUC__) || defined(__clang__))
+#elif 0
   // ------------------------------------------------------
   // Override by defining the mangled C++ names of the operators (as
   // used by GCC and CLang).
@@ -289,7 +289,7 @@ mi_decl_weak int reallocarr(void* p, size_t count, size_t size)    { return mi_r
   void  __libc_free(void* p)                            MI_FORWARD0(mi_free, p)
   void* __libc_memalign(size_t alignment, size_t size)  { return mi_memalign(alignment, size); }
 
-#elif defined(__GLIBC__) && defined(__linux__)
+#elif defined(__linux__)
   // forward __libc interface (needed for glibc-based Linux distributions)
   void* __libc_malloc(size_t size)                      MI_FORWARD1(mi_malloc,size)
   void* __libc_calloc(size_t count, size_t size)        MI_FORWARD2(mi_calloc,count,size)

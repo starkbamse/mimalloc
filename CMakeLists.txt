@@ -481,7 +481,6 @@ endif()
 # static library
 if (MI_BUILD_STATIC)
   add_library(mimalloc-static STATIC ${mi_sources})
-  set_property(TARGET mimalloc-static PROPERTY POSITION_INDEPENDENT_CODE ON)
   target_compile_definitions(mimalloc-static PRIVATE ${mi_defines} MI_STATIC_LIB)
   target_compile_options(mimalloc-static PRIVATE ${mi_cflags} ${mi_cflags_static})
   target_link_libraries(mimalloc-static PRIVATE ${mi_libraries})
